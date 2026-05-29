@@ -1,0 +1,65 @@
+## 🚀 Proposta do Projeto .NET: **AstroHabits Mission Control Desktop**
+
+### 1. Modelagem de Domínio & POO (20 pontos)
+
+Para cobrir Herança, Polimorfismo, Classes Estáticas e Privadas, vamos modelar o núcleo do gerenciamento de tempo e estados de foco do astronauta:
+
+* **Classe Abstrata `ModoFocoBase`:** Classe que dita a regra de qualquer período de foco.
+* **Classes Herdeiras (Herança):** `ModoOrbitaBaixa`, `ModoLua` e `ModoMarte`. Cada uma herda da base, mas implementa tempos de delay diferentes.
+
+* **Polimorfismo:** Um método abstrato `CalcularDelayNotificacao()` que retorna 0 para Órbita Baixa, 5 para Lua e 20 para Marte.
+
+* **Classe Estática `CalculadoraCargaMental`:** Uma classe utilitária (estática) com métodos matemáticos puros para processar os scores inseridos nos formulários de feedback.
+
+* **Atributos Privados:** Encapsulamento rigoroso usando propriedades (`get; private set;`) nas classes de entidade, como `Usuario` e `Tarefa`.
+
+### 2. Abstração e Interfaces (20 pontos)
+
+
+Indispensável para garantir o desacoplamento exigido pelo professor:
+
+* **Interface `INotificacaoManager`:** Define os métodos `ReterNotificacao()` e `DespacharFila()`. Permite simular a injeção de dependência na inicialização das telas do Windows Forms/WPF.
+
+
+* **Interface `IRepositorio<T>`:** Para simular ou realizar a persistência de dados das tarefas e métricas do Micro-TLX.
+
+
+### 3. Lógica de Fluxo, Métodos e Datas (15 pontos)
+
+O "coração" operacional do AstroHabits Desktop:
+
+* **Manipulação de `DateTime`:** Cada tarefa concluída e cada questionário Micro-TLX respondido devem gerar um registro contendo um objeto `DateTime.Now`. O sistema deve ter uma função para listar o histórico e calcular a diferença de tempo (`TimeSpan`) entre o início e o fim de um ciclo de trabalho para alertar sobre fadiga.
+
+* **Estruturas de Controle:** Loops (`foreach`) para varrer a fila de notificações acumuladas e estruturas condicionais (`switch/case`) para alterar o comportamento e as cores da interface de acordo com a fase do Ciclo Circadiano (Foco Intenso, Transição, Descanso).
+
+### 4. Tratamento de Exceções (10 pontos)
+
+Como o briefing diz, sistemas críticos espaciais não podem quebrar de forma abrupta:
+
+* **Exceções Customizadas:** Criar exceções específicas como `FadigaExtremaException` (disparada se o usuário tentar iniciar uma tarefa com o Micro-TLX saturado) ou `FalhaTransmissaoMarteException` (caso o simulador de delay falhe).
+* **Blocos Try-Catch Específicos:** Capturar primeiro as exceções customizadas, depois erros de sistema (como `ArgumentNullException` ou `IOException` se optarem por manipular arquivos) e usar caixas de diálogo amigáveis (`MessageBox.Show`) para avisar o usuário, registrando o log do erro de forma segura sem crashar o app.
+
+### 5. Estruturas Auxiliares — Structs/Partial (5 pontos)
+
+Aproveitar os recursos nativos do C# para organização:
+
+* **Struct `CoordenadasTempo`:** Um `struct` leve para armazenar dados imutáveis de tempo de tela e nível de luz azul recomendada para aquele minuto.
+* **Classes `Partial`:** Separar a classe principal de regras de negócio em arquivos diferentes (ex: `GerenciadorMissao.Core.cs` para a lógica e `GerenciadorMissao.Logs.cs` para os históricos), demonstrando controle sobre o uso de classes parciais além das geradas automaticamente pelo designer do Windows Forms.
+
+### 6. Organização & README (30 pontos)
+
+Para garantir que vocês não percam nenhum ponto bobo nos critérios de desconto:
+
+* **Estrutura de Pastas (Padrão Clean):**
+* `/src/Domain/Entities` (Classes de Domínio/Modelos)
+* `/src/Domain/Interfaces` (Interfaces)
+* `/src/Infrastructure/Data` (Manipulação de arquivos ou repositórios)
+* `/src/Presentation` (As telas do Windows Forms ou WPF)
+
+* **O README Obrigatório:** Deve conter uma introdução explicando o que é o **AstroHabits**, qual a motivação científica (NASA/ESA) por trás da modulação de hábitos e focar explicitamente em como este software desktop se integra à arquitetura global desenhada no Archimate.
+
+* **Diagrama de Fluxos:** Incluir no README um fluxograma simples (pode ser feito no Mermaid Markdown ou Miro) mostrando o caminho: *Escolha do Modo de Órbita ➔ Execução da Task ➔ Resposta do Micro-TLX ➔ Verificação de Carga Cognitiva ➔ Liberação/Bloqueio do próximo ciclo*.
+
+* **Evidências de Execução:** Tirem prints claros de todas as telas funcionando, gerando erros simulados (como a tela de aviso de pausa ativa) e incluam uma pasta `/docs/screenshots` no projeto, listando-as no README.
+
+

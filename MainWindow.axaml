@@ -1,0 +1,203 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:AstroHabitsDesktop.Presentation.ViewModels"
+        xmlns:views="using:AstroHabitsDesktop.Presentation.Views"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="750"
+        x:Class="AstroHabitsDesktop.MainWindow"
+        x:DataType="vm:MainViewModel"
+        Title="AstroHabits Mission Control"
+        Width="1200" Height="750"
+        MinWidth="900" MinHeight="600"
+        Background="#0B1426"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Styles>
+        <!-- Sidebar button style -->
+        <Style Selector="Button.sidebar-btn">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#8899AA"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="20,14"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="CornerRadius" Value="0,12,12,0"/>
+            <Setter Property="Margin" Value="0,2,8,2"/>
+            <Setter Property="BorderThickness" Value="3,0,0,0"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+        </Style>
+        <Style Selector="Button.sidebar-btn:pointerover">
+            <Setter Property="Background" Value="#1A2744"/>
+            <Setter Property="Foreground" Value="#E8E8E8"/>
+        </Style>
+        <Style Selector="Button.sidebar-btn:pressed">
+            <Setter Property="Background" Value="#1E2F52"/>
+        </Style>
+        <Style Selector="Button.sidebar-btn.active">
+            <Setter Property="Background" Value="#162040"/>
+            <Setter Property="Foreground" Value="#E8772E"/>
+            <Setter Property="BorderBrush" Value="#E8772E"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <!-- Card style -->
+        <Style Selector="Border.card">
+            <Setter Property="Background" Value="#111D33"/>
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="Padding" Value="24"/>
+            <Setter Property="BorderBrush" Value="#1E3050"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <!-- Accent button -->
+        <Style Selector="Button.accent">
+            <Setter Property="Background" Value="#E8772E"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="20,12"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style Selector="Button.accent:pointerover">
+            <Setter Property="Background" Value="#F5A623"/>
+        </Style>
+
+        <!-- Secondary button -->
+        <Style Selector="Button.secondary">
+            <Setter Property="Background" Value="#1A2744"/>
+            <Setter Property="Foreground" Value="#CCCCCC"/>
+            <Setter Property="Padding" Value="16,10"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="BorderBrush" Value="#2A3F66"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+        <Style Selector="Button.secondary:pointerover">
+            <Setter Property="Background" Value="#223355"/>
+        </Style>
+
+        <!-- Danger button -->
+        <Style Selector="Button.danger">
+            <Setter Property="Background" Value="#3A1525"/>
+            <Setter Property="Foreground" Value="#E53935"/>
+            <Setter Property="Padding" Value="16,10"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="BorderBrush" Value="#5A2535"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+        <Style Selector="Button.danger:pointerover">
+            <Setter Property="Background" Value="#4A2535"/>
+        </Style>
+
+        <!-- TextBox style -->
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="#0D1829"/>
+            <Setter Property="Foreground" Value="#E0E0E0"/>
+            <Setter Property="BorderBrush" Value="#1E3050"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="12,10"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style Selector="TextBox:focus">
+            <Setter Property="BorderBrush" Value="#E8772E"/>
+        </Style>
+
+        <!-- Slider style -->
+        <Style Selector="Slider">
+            <Setter Property="Foreground" Value="#E8772E"/>
+        </Style>
+    </Window.Styles>
+
+    <Grid ColumnDefinitions="240,*">
+        <!-- SIDEBAR -->
+        <Border Grid.Column="0" Background="#080F1E" BorderBrush="#1A2744" BorderThickness="0,0,1,0">
+            <DockPanel>
+                <!-- Logo area -->
+                <StackPanel DockPanel.Dock="Top" Margin="20,28,20,30">
+                    <TextBlock Text="🚀" FontSize="36" HorizontalAlignment="Center" Margin="0,0,0,8"/>
+                    <TextBlock Text="AstroHabits" FontSize="22" FontWeight="Bold"
+                               Foreground="#E8772E" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Mission Control" FontSize="12" Foreground="#5A6A7A"
+                               HorizontalAlignment="Center" Margin="0,2,0,0"/>
+                    <Border Height="1" Background="#1A2744" Margin="0,20,0,0"/>
+                </StackPanel>
+
+                <!-- Status area at bottom -->
+                <StackPanel DockPanel.Dock="Bottom" Margin="16,0,16,20">
+                    <Border Height="1" Background="#1A2744" Margin="0,0,0,16"/>
+                    <Border Background="#0D1829" CornerRadius="10" Padding="14,10">
+                        <StackPanel Spacing="6">
+                            <TextBlock Text="{Binding FaseCircadianaTexto}" FontSize="12"
+                                       Foreground="#F5A623" FontWeight="SemiBold"/>
+                            <TextBlock FontSize="11" Foreground="#5A6A7A">
+                                <Run Text="Órbita: "/>
+                                <Run Text="{Binding ModoOrbitaTexto}" Foreground="#8899AA"/>
+                            </TextBlock>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
+                <!-- Nav buttons -->
+                <StackPanel Margin="0,4,0,0" Spacing="0">
+                    <Button Classes="sidebar-btn active" Classes.active="{Binding SelectedMenuItem, Converter={x:Static StringConverters.IsNotNullOrEmpty}, FallbackValue=True}"
+                            Command="{Binding NavDashboardCommand}">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <TextBlock Text="📊" FontSize="18" VerticalAlignment="Center"/>
+                            <TextBlock Text="Dashboard" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Classes="sidebar-btn" Command="{Binding NavTarefasCommand}">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <TextBlock Text="📋" FontSize="18" VerticalAlignment="Center"/>
+                            <TextBlock Text="Tarefas" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Classes="sidebar-btn" Command="{Binding NavModoFocoCommand}">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <TextBlock Text="🛰️" FontSize="18" VerticalAlignment="Center"/>
+                            <TextBlock Text="Modo Foco" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Classes="sidebar-btn" Command="{Binding NavMicroTlxCommand}">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <TextBlock Text="🧠" FontSize="18" VerticalAlignment="Center"/>
+                            <TextBlock Text="Micro-TLX" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Classes="sidebar-btn" Command="{Binding NavHistoricoCommand}">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <TextBlock Text="📈" FontSize="18" VerticalAlignment="Center"/>
+                            <TextBlock Text="Histórico" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <!-- MAIN CONTENT -->
+        <Border Grid.Column="1" Margin="0">
+            <ContentControl Content="{Binding CurrentView}">
+                <ContentControl.DataTemplates>
+                    <DataTemplate DataType="vm:DashboardViewModel">
+                        <views:DashboardView/>
+                    </DataTemplate>
+                    <DataTemplate DataType="vm:TarefasViewModel">
+                        <views:TarefasView/>
+                    </DataTemplate>
+                    <DataTemplate DataType="vm:ModoFocoViewModel">
+                        <views:ModoFocoView/>
+                    </DataTemplate>
+                    <DataTemplate DataType="vm:MicroTlxViewModel">
+                        <views:MicroTlxView/>
+                    </DataTemplate>
+                    <DataTemplate DataType="vm:HistoricoViewModel">
+                        <views:HistoricoView/>
+                    </DataTemplate>
+                </ContentControl.DataTemplates>
+            </ContentControl>
+        </Border>
+    </Grid>
+</Window>

@@ -1,0 +1,15 @@
+## Build outputs
+bin/
+obj/
+
+## IDE and user settings
+.vs/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## OS generated files
+.DS_Store
+Thumbs.db

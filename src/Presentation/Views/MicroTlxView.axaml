@@ -1,0 +1,103 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:AstroHabitsDesktop.Presentation.ViewModels"
+             x:Class="AstroHabitsDesktop.Presentation.Views.MicroTlxView"
+             x:DataType="vm:MicroTlxViewModel">
+
+    <ScrollViewer Padding="32,28">
+        <StackPanel Spacing="24">
+            <TextBlock Text="🧠 Micro-TLX — Carga Cognitiva" FontSize="28" FontWeight="Bold" Foreground="White"/>
+            <TextBlock Text="Avalie sua carga mental atual nas 3 dimensões abaixo"
+                       FontSize="14" Foreground="#5A6A7A"/>
+
+            <Grid ColumnDefinitions="*,320">
+                <!-- Sliders -->
+                <Border Classes="card" Grid.Column="0" Margin="0,0,16,0">
+                    <StackPanel Spacing="28">
+                        <!-- Demanda Mental -->
+                        <StackPanel Spacing="8">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <TextBlock Text="Demanda Mental" FontSize="15" FontWeight="SemiBold" Foreground="White"/>
+                                <TextBlock Grid.Column="1" Text="{Binding DemandaMental, StringFormat={}{0:F0}}"
+                                           FontSize="20" FontWeight="Bold" Foreground="#E8772E"/>
+                            </Grid>
+                            <TextBlock Text="Peso: 1.0 — Quanto esforço mental a tarefa exigiu?"
+                                       FontSize="12" Foreground="#5A6A7A"/>
+                            <Slider Minimum="0" Maximum="10" Value="{Binding DemandaMental}"
+                                    TickFrequency="1" IsSnapToTickEnabled="True"/>
+                        </StackPanel>
+
+                        <!-- Esforço -->
+                        <StackPanel Spacing="8">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <TextBlock Text="Esforço" FontSize="15" FontWeight="SemiBold" Foreground="White"/>
+                                <TextBlock Grid.Column="1" Text="{Binding Esforco, StringFormat={}{0:F0}}"
+                                           FontSize="20" FontWeight="Bold" Foreground="#E8772E"/>
+                            </Grid>
+                            <TextBlock Text="Peso: 0.8 — Quão árduo foi concluir a tarefa?"
+                                       FontSize="12" Foreground="#5A6A7A"/>
+                            <Slider Minimum="0" Maximum="10" Value="{Binding Esforco}"
+                                    TickFrequency="1" IsSnapToTickEnabled="True"/>
+                        </StackPanel>
+
+                        <!-- Frustração -->
+                        <StackPanel Spacing="8">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <TextBlock Text="Frustração" FontSize="15" FontWeight="SemiBold" Foreground="White"/>
+                                <TextBlock Grid.Column="1" Text="{Binding Frustracao, StringFormat={}{0:F0}}"
+                                           FontSize="20" FontWeight="Bold" Foreground="#E8772E"/>
+                            </Grid>
+                            <TextBlock Text="Peso: 0.6 — Nível de irritação ou estresse?"
+                                       FontSize="12" Foreground="#5A6A7A"/>
+                            <Slider Minimum="0" Maximum="10" Value="{Binding Frustracao}"
+                                    TickFrequency="1" IsSnapToTickEnabled="True"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- Score Panel -->
+                <StackPanel Grid.Column="1" Spacing="16">
+                    <Border Classes="card">
+                        <StackPanel Spacing="16" HorizontalAlignment="Center">
+                            <TextBlock Text="SCORE PONDERADO" FontSize="12" Foreground="#5A6A7A"
+                                       FontWeight="SemiBold" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding ScoreAtual}" FontSize="56" FontWeight="Bold"
+                                       Foreground="#E8772E" HorizontalAlignment="Center"/>
+                            <Border Background="#1A2744" CornerRadius="8" Padding="16,8"
+                                    HorizontalAlignment="Center">
+                                <TextBlock Text="{Binding Classificacao}" FontSize="16"
+                                           FontWeight="SemiBold" Foreground="#F5A623"
+                                           HorizontalAlignment="Center"/>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Fatigue Warning -->
+                    <Border Classes="card" Background="#3A1525"
+                            BorderBrush="#E53935" BorderThickness="1"
+                            IsVisible="{Binding FadigaDetectada}">
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="⚠️ FADIGA EXTREMA" FontSize="16" FontWeight="Bold"
+                                       Foreground="#E53935" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Score acima de 8.5. Pausa obrigatória recomendada!"
+                                       FontSize="12" Foreground="#FF8A80" TextAlignment="Center"
+                                       TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Actions -->
+                    <StackPanel Spacing="8">
+                        <Button Classes="accent" Content="📝 Registrar Avaliação" HorizontalAlignment="Stretch"
+                                HorizontalContentAlignment="Center" Command="{Binding RegistrarCommand}"/>
+                        <Button Classes="secondary" Content="🔄 Resetar Valores" HorizontalAlignment="Stretch"
+                                HorizontalContentAlignment="Center" Command="{Binding ResetarCommand}"/>
+                    </StackPanel>
+
+                    <TextBlock Text="{Binding Mensagem}" FontSize="13" Foreground="#F5A623"
+                               TextWrapping="Wrap"
+                               IsVisible="{Binding Mensagem, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
