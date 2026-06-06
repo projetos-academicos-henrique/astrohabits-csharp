@@ -1,13 +1,19 @@
-
 using astroHabitsCsharp.util;
 
 namespace astroHabitsCsharp.model
 {
-    abstract public class Entry
+    
+    
+    
+    public abstract partial class Entry
     {
         
         private string createdDate;
 
+        
+        public string CreatedDate { get { return createdDate; } set { createdDate = value; } }
+
+        
         protected Entry()
         {
             GenerateTimeStamp();
@@ -15,8 +21,12 @@ namespace astroHabitsCsharp.model
 
         private void GenerateTimeStamp()
         {
-            createdDate = Timestamp.GetTimestamp(new DateTime());
+            
+            createdDate = Timestamp.GetTimestamp(DateTime.Now); 
         }
 
+        
+        
+        public abstract string GetDetails();
     }
 }

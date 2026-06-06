@@ -1,31 +1,16 @@
+using astroHabitsCsharp.Exceptions;
+
 namespace astroHabitsCsharp.util
 {
     static public class VerifyNumber
     {
-        static public int VerifyNumber1To10(String input)
+        static public void VerifyNumberRange(int valor, int min, int max)
         {
-
-            try
+            if (valor < min || valor > max)
             {
-                int.TryParse(input, out int parsedInput);
-                if (parsedInput < 1 || parsedInput > 9)
-                {
-                    throw new InvalidNumberRangeException("A resposta deve ser entre 1 e 10.");
-                }
-
-                return parsedInput;
+                
+                throw new InvalidNumberRangeException($"O valor deve estar entre {min} e {max}.");
             }
-            catch (InvalidNumberRangeException e)
-            {
-                Console.WriteLine(e);
-                throw new Exception(e.Message);
-            }
-            catch (FormatException e)
-            {
-                Console.WriteLine("Digite um numero valido.");
-                throw new Exception(e.Message);
-            }
-
         }
     }
 }

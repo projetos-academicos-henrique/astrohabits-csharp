@@ -1,7 +1,14 @@
-class InvalidNumberRangeException : Exception
+using System;
+
+namespace astroHabitsCsharp.Exceptions
 {
-    public InvalidNumberRangeException(string message) : base(message)
+    
+    public class InvalidNumberRangeException : Exception
     {
         
+        public InvalidNumberRangeException(string message) : base(message)
+        {
+            
+        }
     }
 }

@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
     "net10.0": {}
   },
@@ -8,29 +8,31 @@
     "net10.0": []
   },
   "packageFolders": {
-    "/home/henrique/.nuget/packages/": {}
+    "C:\\Users\\henri\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/henrique/Documents/codes/astroHabitsCsharp/astroHabitsCsharp.csproj",
+      "projectUniqueName": "C:\\Users\\henri\\OneDrive\\Documents\\code\\astrohabits-csharp\\astroHabitsCsharp.csproj",
       "projectName": "astroHabitsCsharp",
-      "projectPath": "/home/henrique/Documents/codes/astroHabitsCsharp/astroHabitsCsharp.csproj",
-      "packagesPath": "/home/henrique/.nuget/packages/",
-      "outputPath": "/home/henrique/Documents/codes/astroHabitsCsharp/obj/",
+      "projectPath": "C:\\Users\\henri\\OneDrive\\Documents\\code\\astrohabits-csharp\\astroHabitsCsharp.csproj",
+      "packagesPath": "C:\\Users\\henri\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\henri\\OneDrive\\Documents\\code\\astrohabits-csharp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/henrique/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\henri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
-        "/usr/lib/dotnet/library-packs": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https:
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {}
         }
@@ -45,10 +47,11 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net10.0": {
+        "framework": "net10.0",
         "targetAlias": "net10.0",
         "imports": [
           "net461",
@@ -66,7 +69,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/10.0.108/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
