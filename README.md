@@ -1,5 +1,12 @@
 # AstroHabits - Hábitos Espaciais para a Vida na Terra 🚀
 
+## Membros
+- Andrey Rodrigues Nagata - rm555339
+- Henrique Soubhia - rm554493 
+- Oliver Kanai Trindade - rm554954 
+- Pedro Gutierre Cardoso de Oliveira - rm555445 
+- William Weile Feng - rm555132
+
 Com a ideia de trazer soluções "espaciais" para o mundo comum, o AstroHabits não busca uma tecnologia de foguete que pode ser usada num carro — mas sim **como as pessoas se tornam capazes de se manter em si mesmas fora do nosso planeta**. Como fazer uma "super" pessoa?
 
 Este projeto traz **3 soluções inspiradas na vida no espaço** que podem ser usadas como estratégias para ter mais foco e uma vida mais leve.
