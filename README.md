@@ -38,6 +38,14 @@ O programa:
 - Mostra uma **simulação visual** da transição dia→noite
 - Registra a qualidade do sono para acompanhamento
 
+
+## Prints
+
+![alt text](/prints/print1.png)
+![alt text](/prints/print2.png)
+![alt text](/prints/print3.png)
+![alt text](/prints/print4.png)
+
 ## Conceitos Aplicados
 
 Este código atende a todos os requisitos solicitados:
@@ -72,5 +80,3 @@ Este código atende a todos os requisitos solicitados:
 - Model
 - Util
 
----
-_"Hábitos Espaciais para a Vida na Terra" — FIAP Global Solution 2026_ 🚀
