@@ -6,7 +6,7 @@ Este projeto traz **3 soluções inspiradas na vida no espaço** que podem ser u
 
 ## As 3 Soluções
 
-### 📊 1. NASA Task Load Index (TLX)
+### 1. NASA Task Load Index (TLX)
 Ferramenta de avaliação multidimensional usada pela NASA para medir a carga de trabalho percebida. Avalia 6 dimensões:
 - **Demanda Mental** — Quão exigente mentalmente foi a tarefa?
 - **Demanda Física** — Quão exigente fisicamente?
@@ -23,13 +23,13 @@ No espaço, mensagens demoram para chegar. Uma comunicação Terra↔Marte leva 
 Escolhendo um modo de órbita, suas "notificações" são retidas por um tempo:
 | Modo      | Delay       | Inspiração                        |
 |-----------|-------------|-----------------------------------|
-| 🌍 Terra  | 0 minutos   | Comunicação instantânea           |
-| 🌙 Lua    | ~8 minutos  | Delay real Terra↔Lua              |
-| 🔴 Marte  | ~20 minutos | Delay real Terra↔Marte            |
+| Terra  | 0 minutos   | Comunicação instantânea           |
+| Lua    | ~8 minutos  | Delay real Terra↔Lua              |
+| Marte  | ~20 minutos | Delay real Terra↔Marte            |
 
 O foco é na **tarefa atual**, sem esperar que tudo chegue em segundos.
 
-### 🌙 3. Ciclo Circadiano — Qualidade do Sono
+### 3. Ciclo Circadiano — Qualidade do Sono
 Astronautas na ISS veem 16 nascer-do-sol por dia. Sem controle da luz, o ritmo circadiano colapsa. Técnicas para diminuir a luz azul e melhorar a qualidade do sono são **essenciais no espaço** — e você pode usar as mesmas técnicas aqui na Terra.
 
 O programa:
@@ -37,15 +37,6 @@ O programa:
 - Calcula o horário ideal para **parar de usar telas** (2h antes de dormir)
 - Mostra uma **simulação visual** da transição dia→noite
 - Registra a qualidade do sono para acompanhamento
-
-## Como rodar o projeto
-
-1. Tenha o [.NET SDK](https:
-2. Abra o terminal na pasta raiz do projeto.
-3. Digite o comando:
-   ```bash
-   dotnet run
-   ```
 
 ## Conceitos Aplicados
 
@@ -76,20 +67,10 @@ Este código atende a todos os requisitos solicitados:
 
 ## Estrutura de Arquivos
 
-- `Program.cs`: Ponto de entrada com menu interativo e visual.
-- `Model/Entry.cs`: Classe base abstrata e partial.
-- `Model/TaskLoadIndex.cs`: Lógica principal das tarefas TLX com visualização gráfica.
-- `Model/TaskLoadIndex.Data.cs`: Persistência JSON das tarefas (usando `partial`).
-- `Model/SleepEntry.cs`: Classe de registros de sono (herança de Entry).
-- `Model/SleepEntry.Data.cs`: Persistência JSON dos registros de sono (usando `partial`).
-- `Model/OrbitData.cs`: Struct expandida com dados de órbita.
-- `Model/Notification.cs`: Classe de notificações simuladas.
-- `Exceptions/InvalidNumberRangeException.cs`: Exceção personalizada para números.
-- `Exceptions/InvalidTimeException.cs`: Exceção personalizada para horários.
-- `Util/ConsoleUI.cs`: Classe estática com utilitários visuais do console.
-- `Util/SleepCalculator.cs`: Classe estática com cálculos circadianos.
-- `Util/VerifyNumberInput.cs`: Classe estática para validações numéricas.
-- `Util/GetTimestamp.cs`: Classe estática para geração de Data/Hora.
+- Program.cs
+- Exceptions
+- Model
+- Util
 
 ---
 _"Hábitos Espaciais para a Vida na Terra" — FIAP Global Solution 2026_ 🚀
